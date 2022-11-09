@@ -11,12 +11,6 @@ MEALS = (
 
 # Create your models here.
 
-class Finch(models.Model):
-  name = models.CharField(max_length=100)
-  breed = models.CharField(max_length=100)
-  description = models.TextField(max_length=250)
-  age = models.IntegerField()
-
 class Toy(models.Model):
   name = models.CharField(max_length=50)
   color = models.CharField(max_length=20)
@@ -26,6 +20,14 @@ class Toy(models.Model):
 
   def get_absolute_url(self):
     return reverse('toys_detail', kwargs={'pk': self.id})
+
+class Finch(models.Model):
+  name = models.CharField(max_length=100)
+  breed = models.CharField(max_length=100)
+  description = models.TextField(max_length=250)
+  age = models.IntegerField()
+  toys = models.ManyToManyField(Toy)
+
 
   def fed_for_today(self):
     return self.feeding_set.filter(date=date.today()).count() >= len(MEALS)
