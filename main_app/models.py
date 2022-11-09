@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
 
 MEALS = (
   ('B', 'Breakfast'),
@@ -15,6 +16,19 @@ class Finch(models.Model):
   breed = models.CharField(max_length=100)
   description = models.TextField(max_length=250)
   age = models.IntegerField()
+
+class Toy(models.Model):
+  name = models.CharField(max_length=50)
+  color = models.CharField(max_length=20)
+
+  def __str__(self):
+    return self.name
+
+  def get_absolute_url(self):
+    return reverse('toys_detail', kwargs={'pk': self.id})
+
+  def fed_for_today(self):
+    return self.feeding_set.filter(date=date.today()).count() >= len(MEALS)
 
   def __str__(self):
     return self.name
