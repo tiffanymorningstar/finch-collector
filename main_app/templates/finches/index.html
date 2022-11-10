@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block head %}
 <link 
   rel="stylesheet"
@@ -8,9 +7,7 @@
   href="{% static 'css/finches/finch-index.css' %}"
 />
 {% endblock %}
-
 {% block content %}
-
 <section class="page-header">
   <h1>Finch List</h1>
   <img src="{% static 'images/cool-cat.svg' %}" alt="A cool cat" />
@@ -18,11 +15,9 @@
   <img src="{% static 'images/teacup-cat.svg' %}" alt="A cat in a teacup" />
   <img src="{% static 'images/cat-in-box.svg' %}" alt="A cat in a box" />
 </section>
-
 <section class="card-container">
   {% for finch in finches %}
     <div class="card">
-       {% comment %} Add this line {% endcomment %}
        <a href="{% url 'finches_detail' finch.id %}">
       <div class="card-content">
         <div class="card-img-container">
@@ -39,10 +34,8 @@
         {% endif %}
         <p><small>{{ finch.description }}</small></p>
       </div>
-            {% comment %} And this line {% endcomment %}
           </a>
     </div>
   {% endfor %}
 </section>
-
 {% endblock %}

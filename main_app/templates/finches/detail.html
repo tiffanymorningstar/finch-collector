@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block head %}
 <link 
   href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
@@ -19,9 +18,7 @@
 />
 <script defer src="{% static 'js/finch-detail.js' %}"></script>
 {% endblock %}
-
 {% block content %}
-
 <section class="finch-container">
   <div class="finch-img">
     <img 
@@ -60,7 +57,6 @@
       src="{% static 'images/kitty-kabob.svg' %}" 
       alt="A kabob of kittens"
     />
-
       <h3>Add a Feeding</h3>
         <form
           action="{% url 'add_feeding' finch.id %}" 
@@ -149,6 +145,4 @@
       </div>
     </section>
   </div>
-
-
 {% endblock %}
