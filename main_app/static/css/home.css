@@ -83,4 +83,10 @@ main > section {
   .logo-container {
     max-width: 520px;
   }
+
+  h1 {
+    font-size: 30px;
+  }
+
 }
+
